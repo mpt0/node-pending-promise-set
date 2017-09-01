@@ -31,6 +31,11 @@ class PendingPromiseSet extends EventEmitter {
 	}
 
 	add(promise) {
+		if (promise === null || promise === undefined)
+			return;
+		if (!(promise instanceof Promise))
+			throw new TypeError('promise must be a Promise.');
+
 		if (!this._map.has(promise)) {
 			let done = false;
 			let wrapper = new Promise(resolve => {
