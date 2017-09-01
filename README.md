@@ -125,7 +125,7 @@ set.delete(promise);
 
 
 ### `set.clear()`
-Delete all promise from the set.
+Delete all promises from the set.
 ```js
 set.clear();
 ```
