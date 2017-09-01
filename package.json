@@ -1,0 +1,15 @@
+{
+    "name": "pending-promise-set",
+    "version": "1.0.0",
+    "description": "A self-managing collection of pending promises",
+    "main": "index.js",
+    "scripts": {
+        "test": "node test"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/mpt0/node-pending-promise-set.git"
+    },
+    "author": "Max J. Polster",
+    "license": "MIT"
+}
