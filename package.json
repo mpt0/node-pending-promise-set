@@ -1,6 +1,6 @@
 {
     "name": "pending-promise-set",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "description": "A self-managing collection of pending promises",
     "main": "index.js",
     "scripts": {
