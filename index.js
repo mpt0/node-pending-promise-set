@@ -55,7 +55,11 @@ class PendingPromiseSet extends EventEmitter {
 		return promise;
 	}
 
-	join() {
+	join(...promises) {
+		for(let promise of promises) {
+			this.add(promise);
+		}
+
 		return this._map.size === 0
 			? Promise.resolve()
 			:  new Promise(resolve => {

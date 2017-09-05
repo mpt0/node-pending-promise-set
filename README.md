@@ -85,13 +85,14 @@ let promise = set.add(new Promise(resolve => {
 
 
 
-### `set.join()`
+### `set.join(...promises)`
 Create a promise that resolves as soon as the set is empty. Because non-pending promises are removed automatically, you can use `.join(..)` to wait for all promises in the set.
 ```js
 set.add(someAction());
 set.add(someOtherAction());
 await set.join();
 ```
++ promises `Promise...` - Optional promises to `add` before.
 + returns `Promise`
 
 <br/>
