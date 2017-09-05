@@ -54,6 +54,11 @@ async function test() {
 	assert.strictEqual(resolvedOnes.size, 1);
 	assert.strictEqual(rejectedOnes.size, 1);
 
+	let set2 = new PendingPromiseSet();
+	let p3 = wait(50);
+	set2.join(p3);
+	assert(set2.has(p3));
+
 	done = true;
 }
 
