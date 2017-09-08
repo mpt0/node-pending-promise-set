@@ -42,15 +42,21 @@ console.log(set.size);
 
 
 ## Events
+A PendingPromiseSet extends the class exported by the `events` package and emits the following events with the specified parameters:
 
-### `resolve(promise)`
+### `resolve(value, promise)`
 Called when a promise from the set has been resolved.
++ value `<any>` - The resolved value.
++ promise `Promise` - The promise that has been resolved.
 
-### `reject(promise)`
+### `reject(error, promise)`
 Called when a promise from the set has been rejected.
++ error `<any>` - The rejected error.
++ promise `Promise` - The promise that has been rejected.
 
 ### `delete(promise)`
 Called when a promise has been deleted from the set using `set.delete(..)`.
++ promise `Promise` - The promise that has been deleted.
 
 ### `clear()`
 Called when the set has been cleared using `set.clear(..)`.

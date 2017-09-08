@@ -41,10 +41,10 @@ class PendingPromiseSet extends EventEmitter {
 			let wrapper = new Promise(resolve => {
 				promise.then(v => {
 					if (this._map.delete(promise))
-						this.emit('resolve', v);
+						this.emit('resolve', v, promise);
 				}, v => {
 					if (this._map.delete(promise))
-						this.emit('reject', v);
+						this.emit('reject', v, promise);
 				});
 			});
 
