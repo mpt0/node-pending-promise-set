@@ -49,10 +49,15 @@ async function test() {
 	assert.strictEqual(resolvedOnes.size, 1);
 	assert.strictEqual(rejectedOnes.size, 0);
 
+	let handleErrors = set.captureErrors();
 	set.add(waitAndReject(0));
 	await wait(50);
 	assert.strictEqual(resolvedOnes.size, 1);
 	assert.strictEqual(rejectedOnes.size, 1);
+
+	let errorCount = 0;
+	handleErrors(set => errorCount = set.size);
+	assert.strictEqual(errorCount, 1);
 
 	let set2 = new PendingPromiseSet();
 	let p3 = wait(50);

@@ -79,6 +79,28 @@ class PendingPromiseSet extends EventEmitter {
 				this.addListener('clear', listener);
 			});
 	}
+
+	captureErrors() {
+		let errors = new Set();
+		let listener = err => {
+			errors.add(err);
+		};
+		this.addListener('reject', listener);
+		return (throwErrors = PendingPromiseSet.throwErrors) => {
+			this.removeListener('reject', listener);
+			if (errors.size > 0) {
+				throwErrors(errors);
+			}
+		};
+	}
+
+	static throwErrors(set) {
+		if (errors.size > 0) {
+			let err = new Error('One or more errors occured.');
+			err.errors = Array.from(set);
+			throw err;
+		}
+	}
 }
 
 module.exports = PendingPromiseSet;
