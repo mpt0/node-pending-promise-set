@@ -136,3 +136,20 @@ Delete all promises from the set.
 ```js
 set.clear();
 ```
+
+<br/>
+
+
+
+### `set.captureErrors()`
+Utility for handling errors later.
+```js
+let handleErrors = set.captureErrors();
+
+set.add(await someOtherAction());
+await set.join();
+
+// Throw errors if one or more:
+handleErrors();
+```
++ returns `Function(handler)` - A function to handle errors. If called, no more errors will be captured and an optional handler is called with a `Set` of errors that were rejected since the call of `set.captureErrors()`. If no handler is provided, a useful `Error` is thrown with a `errors` property which is an array of all errors.
