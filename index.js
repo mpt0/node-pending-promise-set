@@ -92,7 +92,7 @@ class PendingPromiseSet extends EventEmitter {
 			let onReject = value => errors.push(value);
 			this.addListener('reject', onReject);
 
-			this.join(...promises).then(() => {
+			this.join().then(() => {
 				if (getResults) {
 					this.removeListener('resolve', onResolve);
 				}
