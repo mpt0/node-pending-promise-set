@@ -91,8 +91,23 @@ let promise = set.add(new Promise(resolve => {
 
 
 
+### `set.handle(getResults)`
+Create a promise that resolves or rejects as soon as the set is empty.
+After the set is empty, the promise will reject an array with errors or will resolve to an array with all results if no errors have occured.
+```js
+set.add(someAction());
+set.add(someOtherAction());
+let results = await set.handle();
+```
++ getResults `boolean` - If falsy, no results are recorded and and the resolved array will be empty. Defaults to `true`.
+
+<br/>
+
+
+
 ### `set.join(...promises)`
-Create a promise that resolves as soon as the set is empty. Because non-pending promises are removed automatically, you can use `.join(..)` to wait for all promises in the set.
+Create a promise that resolves as soon as the set is empty.<br/>
+_Note that results or errors are not handled by this function._
 ```js
 set.add(someAction());
 set.add(someOtherAction());
