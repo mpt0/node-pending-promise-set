@@ -98,7 +98,7 @@ class PendingPromiseSet extends EventEmitter {
 					this.removeListener('resolve', onResolve);
 				}
 				this.removeListener('reject', onReject);
-				if (errors.size > 0) {
+				if (errors.length > 0) {
 					reject(errors);
 				} else {
 					resolve(results);
